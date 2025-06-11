@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>School Portal</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family: sans-serif; background:#fefefe; color:#222; }
+  body.dark { background:#333; color:#eee; }
+  body.dark a { color:lightblue; }
+
+  #logo { max-width:100px; display:block; margin: 10px auto; }
+  header { text-align:center; padding: 10px 0; }
+  h1#school-name { margin-bottom: 5px; }
+  p#motto { font-style: italic; margin-bottom: 20px; overflow: hidden; white-space: nowrap; }
+
+  /* Scrolling motto */
+  p#motto {
+    position: relative;
+  }
+  p#motto::after {
+    position: absolute;
+    content: "“Lighting the way to brighter futures.”";
+    white-space: nowrap;
+    animation: scrollText 15s linear infinite;
+    left: 100%;
+    top: 0;
+  }
+  @keyframes scrollText {
+    0% { left: 100%; }
+    100% { left: -100%; }
+  }
+
+  /* Slides */
+  .slide { display:none; padding:20px; max-width: 900px; margin: 0 auto; }
+  .slide.active { display:block; }
+
+  /* Slideshow container */
+  .slideshow-container { position:relative; max-width:600px; margin: 0 auto 20px; }
+  .mySlides { display:none; }
+  .mySlides img { width:100%; height:auto; border-radius:8px; }
+  .fade { animation:fadeEffect 1s; }
+  @keyframes fadeEffect { from {opacity: 0.4;} to {opacity:1;} }
+
+  /* Buttons */
+  .role-buttons button,
+  .slide button,
+  .tab button {
+    margin:5px 8px;
+    padding:10px 16px;
+    font-size: 1rem;
+    border: none;
+    background: #007bff;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  .role-buttons button:hover,
+  .slide button:hover,
+  .tab button:hover {
+    background: #0056b3;
+  }
+  button:focus { outline:none; }
+
+  /* Tabs container */
+  .tab {
+    margin-top: 15px;
+  }
+  .tabcontent {
+    display:none;
+    margin-top: 15px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    background: #fafafa;
+  }
+  .tabcontent.active {
+    display:block;
+  }
+
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 600px;
+    margin-top: 10px;
+  }
+  th, td {
+    text-align: left;
+    border: 1px solid #ccc;
+    padding: 8px;
+  }
+  th {
+    background: #eee;
+  }
+
+  /* Dark mode table */
+  body.dark table {
+    background: #444;
+    color: #eee;
+  }
+  body.dark th {
+    background: #555;
+  }
+  body.dark td {
+    border-color: #666;
+  }
+
+  /* Extras */
+  #countdown p {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-top: 5px;
+  }
+  #theme-toggle {
+    margin-left: 10px;
+  }
+
+  /* Responsive */
+  @media (max-width: 600px) {
+    .role-buttons button,
+    .slide button {
+      font-size: 0.9rem;
+      padding: 8px 12px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div id="slides">
+
+  <!-- Homepage -->
+  <section id="home" class="slide active">
+    <header>
+      <img src="https://dummyimage.com/100x100/007bff/fff&text=Logo" alt="School Logo" id="logo" />
+      <h1 id="school-name">Sunrise High School</h1>
+      <p id="motto">“Lighting the way to brighter futures.”</p>
+    </header>
+
+    <div class="slideshow-container">
+      <div class="mySlides fade"><img src="https://dummyimage.com/600x300/007bff/fff&text=Event+1" alt="Event 1" /></div>
+      <div class="mySlides fade"><img src="https://dummyimage.com/600x300/ff5722/fff&text=Event+2" alt="Event 2" /></div>
+      <div class="mySlides fade"><img src="https://dummyimage.com/600x300/4caf50/fff&text=Event+3" alt="Event 3" /></div>
+    </div>
+
+    <div class="role-buttons">
+      <button onclick="showSlide('student')">Student</button>
+      <button onclick="showSlide('teacher')">Teacher</button>
+      <button onclick="showSlide('parent')">Parent</button>
+      <button onclick="showSlide('admin')">Admin</button>
+      <button onclick="showSlide('extras')">Extras</button>
+    </div>
+  </section>
+
+  <!-- Student -->
+  <section id="student" class="slide">
+    <h2>Student Section</h2>
+    <div class="tab">
+      <button onclick="showTab('stud-timetable')">Timetable</button>
+      <button onclick="showTab('stud-found')">Found & Misplaced Items</button>
+      <button onclick="showTab('stud-notices')">Notices / News</button>
+      <button onclick="showTab('stud-results')">Results</button>
+      <button onclick="showTab('stud-calendar')">Events & Holidays Calendar</button>
+    </div>
+
+    <div class="tabcontent active" id="stud-timetable">
+      <h3>Timetable</h3>
+      <table>
+        <tr><th>Day</th><th>9–10 AM</th><th>10–11 AM</th></tr>
+        <tr><td>Monday</td><td>Maths</td><td>English</td></tr>
+        <tr><td>Tuesday</td><td>Science</td><td>History</td></tr>
+        <tr><td>Wednesday</td><td>Art</td><td>PE</td></tr>
+      </table>
+    </div>
+    <div class="tabcontent" id="stud-found">
+      <h3>Found & Misplaced Items</h3>
+      <p>No items currently reported.</p>
+    </div>
+    <div class="tabcontent" id="stud-notices">
+      <h3>Notices / News</h3>
+      <ul>
+        <li>Final exams start July 1.</li>
+        <li>School picnic on July 15.</li>
+      </ul>
+    </div>
+    <div class="tabcontent" id="stud-results">
+      <h3>Results</h3>
+      <table>
+        <tr><th>Subject</th><th>Grade</th></tr>
+        <tr><td>Maths</td><td>A</td></tr>
+        <tr><td>English</td><td>B+</td></tr>
+        <tr><td>Science</td><td>A-</td></tr>
+      </table>
+    </div>
+    <div class="tabcontent" id="stud-calendar">
+      <h3>Events & Holidays Calendar</h3>
+      <p>[Calendar Placeholder]</p>
+    </div>
+
+    <button onclick="showSlide('home')">← Back to Home</button>
+  </section>
+
+  <!-- Teacher -->
+  <section id="teacher" class="slide">
+    <h2>Teacher Section</h2>
+    <div class="tab">
+      <button onclick="showTab('teach-schedule')">Class Schedule</button>
+      <button onclick="showTab('teach-feedback')">Student Feedback</button>
+      <button onclick="showTab('teach-notices')">Notices / Messages</button>
+      <button onclick="showTab('teach-found')">Found & Misplaced Items</button>
+    </div>
+
+    <div class="tabcontent active" id="teach-schedule">
+      <h3>Class Schedule</h3>
+      <table>
+        <tr><th>Time</th><th>Class</th></tr>
+        <tr><td>9–10 AM</td><td>Grade 9 - English</td></tr>
+        <tr><td>10–11 AM</td><td>Grade 10 - Maths</td></tr>
+      </table>
+    </div>
+    <div class="tabcontent" id="teach-feedback">
+      <h3>Student Feedback (Read-only)</h3>
+      <p>No new feedback.</p>
+    </div>
+    <div class="tabcontent" id="teach-notices">
+      <h3>Notices / Messages</h3>
+      <p>No new messages.</p>
+    </div>
+    <div class="tabcontent" id="teach-found">
+      <h3>Found & Misplaced Items</h3>
+      <p>No items currently.</p>
+    </div>
+
+    <button onclick="showSlide('home')">← Back to Home</button>
+  </section>
+
+  <!-- Parent -->
+  <section id="parent" class="slide">
+    <h2>Parent View</h2>
+    <div class="tab">
+      <button onclick="showTab('parent-reports')">View Progress Reports</button>
+      <button onclick="showTab('parent-attendance')">Attendance Overview</button>
+      <button onclick="showTab('parent-calendar')">School Events Calendar</button>
+      <button onclick="showTab('parent-contact')">Contact Info / Staff List</button>
+    </div>
+
+    <div class="tabcontent active" id="parent-reports">
+      <h3>Progress Reports</h3>
+      <p><a href="#" target="_blank">Report 1 (PDF)</a></p>
+      <p><a href="#" target="_blank">Report 2 (PDF)</a></p>
+    </div>
+    <div class="tabcontent" id="parent-attendance">
+      <h3>Attendance Overview</h3>
+      <p>[Static Chart Placeholder]</p>
+    </div>
+    <div class="tabcontent" id="parent-calendar">
+      <h3>School Events Calendar</h3>
+      <p>[Calendar Placeholder]</p>
+    </div>
+    <div class="tabcontent" id="parent-contact">
+      <h3>Contact Info / Staff List</h3>
+      <ul>
+        <li>Principal: 012-3456789</li>
+        <li>Vice Principal: 098-7654321</li>
+        <li>Admin Office: 011-2233445</li>
+      </ul>
+    </div>
+
+    <button onclick="showSlide('home')">← Back to Home</button>
+  </section>
+
+  <!-- Admin -->
+  <section id="admin" class="slide">
+    <h2>Admin Dashboard</h2>
+    <p>Admin functionality coming soon...</p>
+    <button onclick="showSlide('home')">← Back to Home</button>
+  </section>
+
+  <!-- Extras -->
+  <section id="extras" class="slide">
+    <h2>Extras</h2>
+
+    <div id="gallery">
+      <h3>Gallery</h3>
+      <div style="display:flex; gap:10px; flex-wrap:wrap;">
+        <img src="https://dummyimage.com/150x100/007bff/fff&text=Photo1" alt="Gallery Photo 1" style="border-radius:6px;"/>
+        <img src="https://dummyimage.com/150x100/ff5722/fff&text=Photo2" alt="Gallery Photo 2" style="border-radius:6px;"/>
+        <img src="https://dummyimage.com/150x100/4caf50/fff&text=Photo3" alt="Gallery Photo 3" style="border-radius:6px;"/>
+      </div>
+    </div>
+
+    <div id="countdown" style="margin-top:20px;">
+      <h3>Countdown to Next Event</h3>
+      <p id="ctr">Loading...</p>
+    </div>
+
+    <div style="margin-top:20px;">
+      <label>🌙 Light/Dark Mode: <input type="checkbox" id="theme-toggle" /></label>
+    </div>
+
+    <div id="map" style="margin-top:20px;">
+      <h3>Contact / Map</h3>
+      <iframe
+        src="https://maps.google.com/maps?q=school&t=&z=13&ie=UTF8&iwloc=&output=embed"
+        style="border:0; width:100%; height:250px; border-radius: 6px;"
+        allowfullscreen=""
+        loading="lazy"
+      ></iframe>
+      <p>School Hours: Mon-Fri 8:00 AM - 4:00 PM</p>
+    </div>
+
+    <button onclick="showSlide('home')">← Back to Home</button>
+  </section>
+
+</div>
+
+<script>
+  // Show slide by id, hide others
+  function showSlide(id) {
+    document.querySelectorAll('.slide').forEach(s => s.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    // Reset tabs in each section (activate first tabcontent if exists)
+    const tabContents = document.querySelectorAll('#' + id + ' .tabcontent');
+    if (tabContents.length) {
+      tabContents.forEach(tc => tc.classList.remove('active'));
+      tabContents[0].classList.add('active');
+    }
+  }
+
+  // Show tab content by id
+  function showTab(id) {
+    const tabContent = document.getElementById(id);
+    if (!tabContent) return;
+    const parent = tabContent.parentElement;
+    parent.querySelectorAll('.tabcontent').forEach(tc => tc.classList.remove('active'));
+    tabContent.classList.add('active');
+  }
+
+  // Homepage slideshow auto cycle
+  let slideIndex = 0;
+  function showSlides() {
+    const slides = document.getElementsByClassName("mySlides");
+    for (let slide of slides) {
+      slide.style.display = "none";
+    }
+    slideIndex++;
+    if (slideIndex > slides.length) slideIndex = 1;
+    if(slides[slideIndex - 1]) slides[slideIndex - 1].style.display = "block";
+    setTimeout(showSlides, 5000);
+  }
+  showSlides();
+
+  // Countdown timer (set next event 7 days from now)
+  const nextEvent = new Date();
+  nextEvent.setDate(nextEvent.getDate() + 7);
+  function updateCountdown() {
+    const now = new Date();
+    let diff = nextEvent - now;
+    if(diff < 0){
+      document.getElementById('ctr').textContent = "🎉 Today!";
+      return;
+    }
+    const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const h = Math.floor((diff / (1000 * 60 * 60)) % 24);
+    const m = Math.floor((diff / (1000 * 60)) % 60);
+    const s = Math.floor((diff / 1000) % 60);
+    document.getElementById('ctr').textContent = `${d}d ${h}h ${m}m ${s}s`;
+  }
+  setInterval(updateCountdown, 1000);
+  updateCountdown();
+
+  // Light/dark toggle
+  const toggle = document.getElementById('theme-toggle');
+  toggle.addEventListener('change', () => {
+    document.body.classList.toggle('dark', toggle.checked);
+  });
+</script>
+
+</body>
+</html>

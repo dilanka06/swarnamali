@@ -1,1 +1,1 @@
-# swarnamali
+# Swarnamali Girls' College, Kandy

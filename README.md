@@ -7,15 +7,15 @@ This static website is designed to provide quick access to school information fo
 
 ---
 
-## 🌟 Features
+## Features
 
-- 🎓 Role-based sections (Student, Teacher, Parent)
-- 🖼 Slideshow of school events
-- 🗓 Timetable, Notices, Calendar
-- 🧑‍🏫 Teacher feedback and messages
-- 🧑‍💼 Parent view with reports and contacts
-- 🌙 Light/Dark Mode toggle
-- 🖼 Gallery, Countdown, and Contact Info
+- Role-based sections (Student, Teacher, Parent)
+- Slideshow of school events
+- Timetable, Notices, Calendar
+- Teacher feedback and messages
+- Parent view with reports and contacts
+- Light/Dark Mode toggle
+- Gallery, Countdown, and Contact Info
 
 ---
 
@@ -23,18 +23,16 @@ This static website is designed to provide quick access to school information fo
 
 1. Clone or download the repo
 2. Open `index.html` in your browser  
-   **OR**  
-   Use Live Server in VS Code for auto-reloading
+   
+---
+
+## Live Demo
+
+> [Deployed Link](https://dilanka06.github.io/swarnamali/) 
 
 ---
 
-## 🌐 Live Demo
-
-> [Deployed Link](https://your-deployment-url.com) 
-
----
-
-## 📌 Note
+## Note
 
 This project does not use any database. All content is static and frontend-only.
 

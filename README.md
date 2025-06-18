@@ -16,7 +16,7 @@ This static website is designed to provide quick access to school information fo
 
 ## Live Demo
 
-> [Deployed Link](https://dilanka06.github.io/swarnamali/) 
+> [Deployed Link](https://swarnamaligck.netlify.app/) 
 
 ---
 

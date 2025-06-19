@@ -2,8 +2,10 @@
 
 ## School Portal Website
 
-School portal built using **HTML**, **CSS**, and **JavaScript**.  
-This static website is designed to provide quick access to school information for **Students**.
+School Portal built using HTML, CSS, and JavaScript.  
+This static website provides quick access to school information and updates for students and other users.  
+
+Note: Some parts of the site may not be fully optimized for mobile devices.
 
 ---
 
